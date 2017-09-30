@@ -1,0 +1,27 @@
+SOCIAL NAVIGATION
+
+Description
+-----------
+This implementation simulates a robot following a subject (in this case another
+turtle controlled from tutle_teleop_key). It also take into account the notion
+of proxemics by keeping a predefined distance away from the subject. It also
+simulate the mood of the follower over time. The follower would periodically
+feel extroverted and wants to come closer to the subject to socialize, and
+periodically have its introverted moments and want to move away from the
+subject to be alone.
+
+
+Implementation
+--------------
+* The following mechanism is implemented with tf broadcaster and listener
+* To simulate the periodic mood, one of the transform coordinate is increase
+  then decrease over time
+* To keep a minimum distance from the subject, the varying transform 
+  coordinate is checked against a minimum bound
+
+
+Instruction
+-----------
+# to run:
+	roslaunch social_nav start_demo.launch
+
