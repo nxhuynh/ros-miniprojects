@@ -1,6 +1,6 @@
 #!/usr/bin/env python  
 import roslib
-roslib.load_manifest('learning_tf')
+roslib.load_manifest('social_nav')
 import rospy
 import math
 import tf
