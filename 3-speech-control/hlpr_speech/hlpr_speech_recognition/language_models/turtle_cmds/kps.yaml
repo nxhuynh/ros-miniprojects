@@ -1,0 +1,17 @@
+tag: "TURN_LEFT"
+speech: ["TURN LEFT"]
+---
+tag: "TURN_RIGHT"
+speech: ["TURN RIGHT"]
+---
+tag: "GO_STRAIGHT"
+speech: ["GO STRAIGHT"]
+---
+tag: "STOP"
+speech: ["STOP"]
+---
+tag: "TURN_AROUND"
+speech: ["TURN AROUND"]
+---
+tag: "SPIN_AROUND"
+speech: ["SPIN AROUND"]
