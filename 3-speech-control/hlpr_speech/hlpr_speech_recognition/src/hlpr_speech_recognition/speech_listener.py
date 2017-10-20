@@ -51,6 +51,10 @@ from std_msgs.msg import String
 from hlpr_speech_msgs.msg import StampedString, SpeechCommand
 from hlpr_speech_msgs.srv import SpeechService
 
+import roslib
+import math
+import geometry_msgs.msg
+
 class SpeechListener:
 
   COMMAND_TOPIC_PARAM = "/speech/publish_topic"
@@ -103,6 +107,9 @@ class SpeechListener:
     s = rospy.Service(self.service_topic, SpeechService, self.get_last_command)
     rospy.loginfo("Speech listener initialized")
 
+    # Setup publisher for turtlesim
+    self.turtle_vel = rospy.Publisher('turtle1/cmd_vel', geometry_msgs.msg.Twist, queue_size=1)
+
   # The following function is called each time, for every message
   def callback(self, msg):
 
@@ -116,6 +123,10 @@ class SpeechListener:
     self.last_command_fresh = True
     if self.spinning:
       rospy.loginfo(rospy.get_caller_id() + '  I heard %s', str(self.last_command))
+      cmd = geometry_msgs.msg.Twist()
+      cmd.linear.x = 0.5 * math.sqrt(0.0 ** 2 + 2.0 ** 2) 
+      cmd.angular.z = 4 * math.atan2(2.0, 1.0)
+      self.turtle_vel.publish(cmd)
 
   # method to extract command string from msg
   def _map_keyword_to_command(self, data):
